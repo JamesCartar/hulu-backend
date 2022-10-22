@@ -66,3 +66,33 @@ const fetchScreenPlay = async (screenPlay ,page = 1) => {
 };
 
 module.exports = { getTwentyMovies, getTwentyTvShows, getFeatureMovie };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const heinasdfasdfasdf = async (req, res, next) => {
+  try {
+    let response = await axios.get(
+      `asddddddddddddddddddddddd`
+      , {
+          params: {
+              api_key: 'ddddddddddddddddddddddd'
+          }
+      })
+    let randomIndex = Math.floor(Math.random() * response.data.results.length)
+    res.status(200).json({success: true, featureMovie: response.data.results[randomIndex]})
+  } catch (error) {
+    console.log(error)
+    return next(error)
+  }
+}
