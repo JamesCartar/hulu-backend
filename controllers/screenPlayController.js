@@ -29,7 +29,7 @@ const getFeatureMovie = async (req, res, next) => {
       `https://api.themoviedb.org/3/movie/now_playing`
       , {
           params: {
-              api_key: 'b38617053052d14c445b6e18cafadda7'
+              api_key: process.env.API_KEY
           }
       })
     let randomIndex = Math.floor(Math.random() * response.data.results.length)
@@ -49,7 +49,7 @@ const fetchScreenPlay = async (screenPlay ,page = 1) => {
           `https://api.themoviedb.org/3/${screenPlay}/popular`
         , {
             params: {
-                api_key: 'b38617053052d14c445b6e18cafadda7',
+                api_key: process.env.API_KEY,
                 page: page
             }
         })

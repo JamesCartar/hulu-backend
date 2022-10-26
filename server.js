@@ -11,6 +11,7 @@ const userRouter = require('./routes/userRoute.js');
 const movieRouter = require('./routes/movieRoute.js');
 const listRouter = require('./routes/listRoute.js')
 const screenPlayRouter = require('./routes/screenPlayRoute.js');
+const trailerRouter = require('./routes/screenPlayTrailer');
 
 const connectDB = require("./config/connectDb.js");
 
@@ -38,6 +39,7 @@ app.use('/users', authMiddleware, userRouter);
 app.use('/movies', authMiddleware, movieRouter);
 app.use('/lists', authMiddleware, listRouter)
 app.use('/screenplay', screenPlayRouter);
+app.use('/trailer', authMiddleware, trailerRouter)
 
 const start = async () => {
     let server;
