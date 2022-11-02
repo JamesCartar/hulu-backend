@@ -2,7 +2,7 @@ const watchListModel = require('../models/WatchList');
 
 
 
-// get all movies
+// get all the movies
 const getAllWatchList = async (req, res, next) => {
     if(req.jwt) {
         try {
