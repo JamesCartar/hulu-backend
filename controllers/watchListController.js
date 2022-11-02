@@ -6,9 +6,9 @@ const watchListModel = require('../models/WatchList');
 const getAllWatchList = async (req, res, next) => {
     if(req.jwt) {
         try {
-            const watchList = await watchListModel.find({user_id: req.body.user_id});
+            const watchList = await watchListModel.find({user_id: req.jwt.sub});
             if(watchList.length > 0) {
-                res.status(201).json({success: true, watchList: watchList});
+                res.status(200).json({success: true, watchList: watchList});
             } else {
                 res.status(200).json({success: true, msg: "You haven't added any Movies or TV shows to your watchlist."});
             }

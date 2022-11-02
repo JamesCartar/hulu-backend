@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
     salt: {
         type: String,
         required: true,
+    },
+    isAdmin: {
+	type: boolean,
+	default: false,
     }
 }, {
     timestamps: true

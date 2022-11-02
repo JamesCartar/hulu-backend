@@ -5,8 +5,8 @@ const { getAllWatchList, addWatchList, deleteAScreenPlayWatchList, clearWatchLis
 const router = express.Router();
 
 router.route('/')
-    .post(addWatchList)
-    .get(getAllWatchList);
+    .get(getAllWatchList)
+    .post(addWatchList);
 
 router.route('/clear/:user_id')
     .delete(clearWatchList);
