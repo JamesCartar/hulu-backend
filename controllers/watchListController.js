@@ -26,12 +26,12 @@ const addWatchList = async (req, res, next) => {
         watchListModel.findOne({ title: req.body.title })
         .then(async screenPlay => {
             if(screenPlay) {
-                res.status(200).json({success: false, msg: 'Screenplay already exist in watch list!'})
+                res.status(200).json({success: false, msg: 'Already exist in watch list!'})
             } else {
                 const newMovie = new watchListModel(req.body);
                 try {
                     const savedMovie = await newMovie.save();
-                    res.status(201).json({success: true, savedMovie: savedMovie})
+                    res.status(201).json({ success: true, msg: `Has added to watch list !` })
                 } catch (error) {
                     res.status(500).json({success: false, msg: error.message})
                 }
