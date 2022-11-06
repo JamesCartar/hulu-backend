@@ -7,10 +7,20 @@ const getAllWatchList = async (req, res, next) => {
     if(req.jwt) {
         try {
             const watchList = await watchListModel.find({user_id: req.jwt.sub});
+            const movieList = watchList.filter((screenPlay) => screenPlay.type === 'movie');
+            const tvList = watchList.filter((screenPlay) => screenPlay.type === 'tv');
+            
+
             if(watchList.length > 0) {
-                res.status(200).json({success: true, watchList: watchList});
+                res.status(200).json({success: true, watchList: {
+                    movieList,
+                    tvList
+                }});
             } else {
-                res.status(200).json({success: true, msg: "You haven't added any Movies or TV shows to your watchlist."});
+                res.status(200).json({success: true, watchList: {
+                    movieList: [],
+                    tvList: []
+                }});
             }
         } catch (error) {
             res.status(500).json({success: false, msg: error.message})

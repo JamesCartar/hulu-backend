@@ -22,6 +22,11 @@ const WatchListSchema = new mongoose.Schema({
     overView: {
         type: String,
         required: true,
+    },
+    type: {
+        type: String,
+        enum: ["movie", "tv"],
+        required: true,
     }
 }, {
     timestamps: true
