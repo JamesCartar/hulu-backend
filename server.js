@@ -30,8 +30,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
-app.get('/', authMiddleware, (req, res) => {
-    console.log(req.jwt)
+app.get('/', (req, res) => {
     res.status(200).json({ success: true, msg: 'you made it to the route' });
 })
 

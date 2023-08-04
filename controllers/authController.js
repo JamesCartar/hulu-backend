@@ -2,9 +2,9 @@ const utils = require('../utils/passwordUtils.js');
 const userModel = require('../models/User.js');
 
 const register = (req, res, next) => {
-    const {name, email, password, isAdmin} = req.body;
+    const { name, email, password } = req.body;
 
-    userModel.findOne({$or: [{ name: name }, { email: email }]})
+    userModel.findOne({email})
         .then(user => {
             if(user) {
                 return res.status(409).json({success: false, msg: 'User already exists!'})
@@ -13,12 +13,12 @@ const register = (req, res, next) => {
                 const salt = saltHash.salt;
                 const hash = saltHash.hash;
                 
-                const newUser = new userModel({ name, email, hash, salt, isAdmin});
+                const newUser = new userModel({ name, email, hash, salt });
                 newUser.save()
                     .then(user => {
                         const jwt = utils.issueJWT(user);
                         
-                        const {_doc: { _id, email, name, isAdmin, ...userInfoToSend }} = user;
+                        const {_doc: { _id, email, name, isAdmin, ...userInfoNotToSend }} = user;
                         return res.status(201).json({ success: true, _id, email, name, isAdmin, token: jwt.token, expires: jwt.expires})
                     })
                     .catch(err => next(err))
