@@ -11,7 +11,7 @@ const userRouter = require('./routes/userRoute.js');
 const movieRouter = require('./routes/movieRoute.js');
 const listRouter = require('./routes/listRoute.js')
 const screenPlayRouter = require('./routes/screenPlayRoute.js');
-const trailerRouter = require('./routes/screenPlayTrailer');
+const trailerRouter = require('./routes/screenPlayTrailer.js');
 const watchListRouter = require('./routes/watchListRoute.js');
 
 const connectDB = require("./config/connectDb.js");
