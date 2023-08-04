@@ -22,7 +22,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: "https://elaborate-fudge-4cc91c.netlify.app"
+    origin: "https://hulu-frontend.vercel.app"
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
