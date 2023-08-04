@@ -22,7 +22,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: "https://hulu-frontend.vercel.app"
+    origin: "https://hulu-frontend-j4wsydufc-jamescartar.vercel.app"
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
