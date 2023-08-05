@@ -22,7 +22,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: "https://master--arjun-hulu-clone.netlify.app"
+    origin: ["https://hulu-frontend.vercel.app", "http://localhost:3000"]
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
